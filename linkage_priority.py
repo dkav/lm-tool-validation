@@ -1,3 +1,5 @@
+# Linkage Priority
+
 import arcpy
 
 
@@ -24,7 +26,7 @@ class ToolValidator(object):
 
     def updateParameters(self):
         """Modify the values and properties of parameters before internal
-        validation is performed.  This method is called whenever a parameter
+        validation is performed. This method is called whenever a parameter
         has been changed."""
         if self.coretbl_param.value:
             for i in self.core_params:
@@ -53,12 +55,14 @@ class ToolValidator(object):
         else:
             for i in self.climate_params:
                 self.params[i].enabled = False
-        return
 
     def updateMessages(self):
         """Modify the messages created by internal validation for each tool
-        parameter.  This method is called after internal validation."""
+        parameter. This method is called after internal validation."""
         if self.coretbl_param.value is None:
             for i in self.core_params:
                 self.params[i].clearMessage()
-        return
+
+    def isLicensed(self):
+        """Set whether tool is licensed to execute."""
+        return True
