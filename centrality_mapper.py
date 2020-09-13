@@ -25,7 +25,7 @@ class ToolValidator(object):
         parameter. This method is called after internal validation."""
         # Project dir validation
         if not self.params[0].hasError() and self.params[0].altered:
-            if (len(str(self.params[0].value)) > 100) or (
+            if (len(str(self.params[0].value)) > 100 or
                     set("# ").intersection(str(self.params[0].value))):
                 self.params[0].setErrorMessage("Project directory must be less"
                                                " than 100 characters in length"
